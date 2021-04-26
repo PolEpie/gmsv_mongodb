@@ -11,6 +11,14 @@ environment:
   CMAKE_TOOLCHAIN_FILE: C:\Tools\vcpkg\scripts\buildsystems\vcpkg.cmake
   MSVC_VERSION: 64
   CL_VERSION: x64
+  
+  matrix:
+
+  - job_name: Windows build
+    appveyor_build_worker_image: Visual Studio 2019
+
+  - job_name: Linux build
+    appveyor_build_worker_image: Visual Studio 2019
 
 configuration:
   - Debug
@@ -21,24 +29,37 @@ for:
     matrix:
       only:
         - platform: x86
+        - job_name: Windows 32 Bit
       environment:
         VCPKG_DEFAULT_TRIPLET: x86-windows-static
         VCPKG_TARGET_TRIPLET: x86-windows-static
         MSVC_VERSION: 32
         CL_VERSION: Win32
+        
+    matrix:
+      only:
+          - platform: x64
+          - job_name: Windows 64 Bit
+      environment:
+        VCPKG_DEFAULT_TRIPLET: x64-windows-static
+        VCPKG_TARGET_TRIPLET: x64-windows-static
+        MSVC_VERSION: 64
+        CL_VERSION: Win64
  
-    linux:
+    matrix:
       only:
           - platform: x86
+          - job_name: Linux 32 Bit
       environment:
         VCPKG_DEFAULT_TRIPLET: x86-linux-static
         VCPKG_TARGET_TRIPLET: x86-linux-static
         MSVC_VERSION: 32
         CL_VERSION: Lin32
       
-    linux64:
+    matrix:
       only:
           - platform: x64
+          - job_name: Linux 64 Bit
       environment:
         VCPKG_DEFAULT_TRIPLET: x64-linux-static
         VCPKG_TARGET_TRIPLET: x64-linux-static
@@ -47,6 +68,7 @@ for:
 
 
 init:
+  - appveyor version
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars%MSVC_VERSION%.bat"
 
 install:
