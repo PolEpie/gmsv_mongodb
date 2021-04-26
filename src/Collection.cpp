@@ -179,4 +179,5 @@ LUA_FUNCTION(collection_bulk) {
     LUA->PushUserType(bulk, BulkMetaTableId);
 
     return 1;
+        
 }
