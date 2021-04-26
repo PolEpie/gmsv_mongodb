@@ -36,7 +36,7 @@ for:
         MSVC_VERSION: 32
         CL_VERSION: Win32
         
-    matrix:
+    win64:
       only:
           - platform: x64
           - job_name: Windows 64 Bit
@@ -46,7 +46,7 @@ for:
         MSVC_VERSION: 64
         CL_VERSION: Win64
  
-    matrix:
+    lin32:
       only:
           - platform: x86
           - job_name: Linux 32 Bit
@@ -56,7 +56,7 @@ for:
         MSVC_VERSION: 32
         CL_VERSION: Lin32
       
-    matrix:
+    lin32:
       only:
           - platform: x64
           - job_name: Linux 64 Bit
