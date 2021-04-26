@@ -120,6 +120,10 @@ GMOD_MODULE_OPEN() {
 
         LUA->PushCFunction(bulk_insert);
         LUA->SetField(-2, "Insert");
+    
+        LUA->PushCFunction(bulk_update);
+        LUA->SetField(-2, "Update");
+    
 
     LUA->Pop();
 
