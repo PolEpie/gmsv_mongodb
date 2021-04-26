@@ -6,14 +6,15 @@ image:
   - Visual Studio 2019
 
 environment:
-  VCPKG_DEFAULT_TRIPLET: x64-windows-static
-  VCPKG_TARGET_TRIPLET: x64-windows-static
-  CMAKE_TOOLCHAIN_FILE: C:\Tools\vcpkg\scripts\buildsystems\vcpkg.cmake
-  MSVC_VERSION: 64
-  CL_VERSION: x64
+  
   
   matrix:
-
+    VCPKG_DEFAULT_TRIPLET: x64-windows-static
+    VCPKG_TARGET_TRIPLET: x64-windows-static
+    CMAKE_TOOLCHAIN_FILE: C:\Tools\vcpkg\scripts\buildsystems\vcpkg.cmake
+    MSVC_VERSION: 64
+    CL_VERSION: x64
+    
   - job_name: Windows build
     appveyor_build_worker_image: Visual Studio 2019
 
@@ -27,14 +28,13 @@ configuration:
 for:
   -
     matrix:
-      - only:
-          - platform: x86
-            job_name: Windows 32 Bit
-      - environment:
-          - VCPKG_DEFAULT_TRIPLET: x86-windows-static
-            VCPKG_TARGET_TRIPLET: x86-windows-static
-            MSVC_VERSION: 32
-            CL_VERSION: Win32
+      only:
+         - job_name: Windows 32 Bit
+    environment:
+       - VCPKG_DEFAULT_TRIPLET: x86-windows-static
+         VCPKG_TARGET_TRIPLET: x86-windows-static
+         MSVC_VERSION: 32
+         CL_VERSION: Win32
   -     
     matrix:
   
