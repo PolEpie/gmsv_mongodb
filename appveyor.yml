@@ -27,14 +27,14 @@ configuration:
 for:
   -
     matrix:
-      only:
-        - platform: x86
-          job_name: Windows 32 Bit
-      environment:
-        - VCPKG_DEFAULT_TRIPLET: x86-windows-static
-          VCPKG_TARGET_TRIPLET: x86-windows-static
-          MSVC_VERSION: 32
-          CL_VERSION: Win32
+      - only:
+          - platform: x86
+            job_name: Windows 32 Bit
+      - environment:
+          - VCPKG_DEFAULT_TRIPLET: x86-windows-static
+            VCPKG_TARGET_TRIPLET: x86-windows-static
+            MSVC_VERSION: 32
+            CL_VERSION: Win32
   -     
     matrix:
   
