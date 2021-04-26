@@ -26,6 +26,19 @@ for:
       VCPKG_TARGET_TRIPLET: x86-windows-static
       MSVC_VERSION: 32
       CL_VERSION: Win32
+      
+    linux:
+      VCPKG_DEFAULT_TRIPLET: x86-linux-static
+      VCPKG_TARGET_TRIPLET: x86-linux-static
+      MSVC_VERSION: 32
+      CL_VERSION: Lin32
+      
+    linux64:
+      VCPKG_DEFAULT_TRIPLET: x64-linux-static
+      VCPKG_TARGET_TRIPLET: x64-linux-static
+      MSVC_VERSION: 64
+      CL_VERSION: Lin64
+
 
 init:
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars%MSVC_VERSION%.bat"
